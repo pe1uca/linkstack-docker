@@ -139,7 +139,7 @@ Both HTTP and HTTPS are supported and exposed by default.
 
 <br>
 
-<pre>
+```bash
 docker run --detach \
     --name linkstack \
     --publish 80:80 \
@@ -147,13 +147,13 @@ docker run --detach \
     --restart unless-stopped \
     --mount source=linkstack,target=/htdocs \
     linkstackorg/linkstack
-</pre>
+```
 
 <br>
 
 #### Custom deployment
 
-<pre>
+```bash
 docker run --detach \
     --name linkstack \
     --hostname linkstack \
@@ -168,7 +168,7 @@ docker run --detach \
     --restart unless-stopped \
     --mount source=linkstack,target=/htdocs \
     linkstackorg/linkstack
-</pre>
+```
 
 <br>
 
@@ -176,11 +176,8 @@ docker run --detach \
 <ins>Use HTTPS for your reverse proxy to avoid issues</ins><br>
 Example config.
 
-<pre>
-version: "3.8"
-
+```yml
 services:
-
   linkstack:
     hostname: 'linkstack'
     image: 'linkstackorg/linkstack:latest'
@@ -195,12 +192,13 @@ services:
     volumes:
       - 'linkstack_data:/htdocs'
     ports:
+      - '8180:80'
       - '8190:443'
     restart: unless-stopped
 
 volumes:
   linkstack_data:
-</pre>
+```
 
 <br>
 
