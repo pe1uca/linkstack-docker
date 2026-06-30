@@ -44,7 +44,7 @@ RUN TAG=$(curl -s https://api.github.com/repos/LinkStackOrg/LinkStack/releases/l
     curl -L -o linkstack.zip \
       "https://github.com/LinkStackOrg/LinkStack/releases/download/${TAG}/linkstack.zip" && \
     7z x linkstack.zip -o/linkstack && \
-    cp -r /linkstack /htdocs && \
+    cp -ar /linkstack/linkstack/. /htdocs && \
     rm linkstack.zip
 
 
